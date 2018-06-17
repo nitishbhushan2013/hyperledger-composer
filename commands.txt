@@ -1,0 +1,53 @@
+commands to build, initiate and deploy the application on Fabric ecosystem 
+
+required tools 
+---------------
+Nitishs-MacBook-Pro:fabric-dev-servers nitishbhushan$
+
+npm install -g composer-cli
+npm install -g generator-hyperledger-composer
+generator-hyperledger-composer --version
+yo --version
+npm install -g composer-playground
+npm install -g composer-rest-server
+cd fabric-dev-servers/
+curl -O https://raw.githubusercontent.com/hyperledger/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.tar.gz
+tar -xvf fabric-dev-servers.tar.gz
+./downloadFabric.sh
+
+./startFabric.sh
+./createPeerAdminCard.sh 
+yo hyperledger-composer
+
+cd ..
+mkdir archive
+cd archive/
+composer archive create -t dir -n ../fabric-dev-servers/nitish-bna/
+cd..
+
+composer network install -a ../archive/nitish-bna@0.0.1.bna -c PeerAdmin@hlfv1
+composer network start -c PeerAdmin@hlfv1 -n nitish-bna -V 0.0.1 -A admin -S adminpw
+
+composer card import -f admin@nitish-bna.card
+composer card list
+composer network ping -c admin@nitish-bna
+composer network list -c admin@nitish-bna
+
+upgarde the BNA 
+---------------
+Nitishs-MacBook-Pro:archive nitishbhushan$ composer archive create -t dir -n ../fabric-dev-servers/nitish-bna/
+Nitishs-MacBook-Pro:fabric-dev-servers nitishbhushan$ composer network install -a ../archive/nitish-bna@0.0.2.bna -c PeerAdmin@hlfv1
+Nitishs-MacBook-Pro:fabric-dev-servers nitishbhushan$ composer network upgrade -c PeerAdmin@hlfv1 -n nitish-bna -V 0.0.2 
+Nitishs-MacBook-Pro:fabric-dev-servers nitishbhushan$ composer network ping -c admin@nitish-bna
+
+
+----------------------------------------------------------------------------
+Hyper ledger solution architecure
+3 layers, used Yo to generate angular skelton
+
+step1: start fabric server
+step2: deploy Business Network on the serrver runtime 
+step3: deploy admin card of the BN 
+step4: start REST server - composer-rest-server
+step5: initiate yo command to create angular app - yo hyperledger-composer:angular
+

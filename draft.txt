@@ -1,0 +1,15 @@
+Error: Error trying to start business network. Error: No valid responses from any peers. Response from attempted peer comms was an error: Error: REQUEST_TIMEOUT
+
+
+second error while creating angular client through yo
+-----------------------------------
+
+problem 
+---------
+rror: Failed to load connector module "composer-connector-hlfv1" for connection type "hlfv1". The gRPC binary module was not installed. This may be fixed by running "npm rebuild"
+Original error: Cannot find module '/Users/nitishbhushan/.nvm/versions/node/v8.11.2/lib/node_modules/generator-hyperledger-composer/node_modules/grpc/src/node/extension_binary/node-v57-darwin-x64-unknown/grpc_node.node'-The gRPC binary module was not installed. This may be fixed by running "npm rebuild"
+
+solution
+--------
+npm uninstall -g generator-hyperledger-composer
+npm install -g generator-hyperledger-composer
