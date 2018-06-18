@@ -1,0 +1,10 @@
+namespace  org.acme.airline.flight 
+import org.acme.airline.aircraft.Aircraft
+
+asset flight identified by flightId {
+  o String flightId
+  o String source
+  o String destination
+ --> Aircraft aircraft
+ o String[] aliasAircraft
+} 
