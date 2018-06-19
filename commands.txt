@@ -41,6 +41,23 @@ Nitishs-MacBook-Pro:fabric-dev-servers nitishbhushan$ composer network upgrade -
 Nitishs-MacBook-Pro:fabric-dev-servers nitishbhushan$ composer network ping -c admin@nitish-bna
 
 
+Ruhning of Business netwrk on locally runing Fabric
+./startFabric.sh   -- start the fabric run time
+./createPeerAdminCard.sh -- create the admin peer cards
+composer network ping -c PeerAdmin@hlfv1    //check the server
+composer network install -a ../archive/airlinev8@0.0.1.bna -c PeerAdmin@hlfv1
+composer card list  -- check the BN cards
+composer network start -c peerAdmin@hlfv1 -n airlinev8@0.0.1 -A admin -S adminpw -V 0.0.1
+composer card import -f admin@airlinev8.card
+composer-rest-server -c admin@airlinev8 -p 3000
+
+
+
+composer network install -a ../archive/airlinev8@0.0.1.bna -c PeerAdmin@hlfv1 
+composer network start -c peerAdmin@hlfv1 -n airlinev8  -A admin -S adminpw -V 0.0.1
+composer card import -f admin@airlinev8.card
+composer-rest-server -c admin@airlinev8 -p 3000
+
 ----------------------------------------------------------------------------
 Hyper ledger solution architecure
 3 layers, used Yo to generate angular skelton
