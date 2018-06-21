@@ -13,3 +13,27 @@ solution
 --------
 npm uninstall -g generator-hyperledger-composer
 npm install -g generator-hyperledger-composer
+
+
+
+Problem 
+---------
+while executing below command got an error
+composer-rest-server -c admin@airlinev8 -p 3000 
+
+Nitishs-MacBook-Pro:fabric-dev-servers nitishbhushan$ composer-rest-server -c admin@airlinev8 -p 3000 
+Discovering types from business network definition ...
+Connection fails: Error: Error trying to ping. Error: Composer runtime (0.19.9) is not compatible with client (0.19.8)
+It will be retried for the next request.
+Exception: Error: Error trying to ping. Error: Composer runtime (0.19.9) is not compatible with client (0.19.8)
+Error: Error trying to ping. Error: Composer runtime (0.19.9) is not compatible with client (0.19.8)
+
+solution
+-------
+step 1: check version of composer-cli and composer-rest-server
+
+composer-cli - 0.19.9
+composer-rest-server - 0.19.8
+
+step2: install latest version of composer-rest-server 
+npm install composer-rest-server -g

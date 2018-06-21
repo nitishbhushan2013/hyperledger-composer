@@ -1,0 +1,31 @@
+// get all aircrafts
+query AllAircraft {
+  description: "fetch all the aircrafts"
+  statement: 
+    SELECT org.acme.airline.aircraft.Aircraft
+
+}
+
+//get all aircrafts where oenership = 'OWNED'
+query AllAircraftByOwnershipType {
+  description: "fetch all aircraft of 'OWNER' type"
+  statement:
+    SELECT org.acme.airline.aircraft.Aircraft
+      WHERE (ownershipType == "OWNED")
+}
+
+//get all aircraft with specific criterias
+query AllAircraftsBasedOnSeats {
+  description: "All aircrafts where firstclass > 3, businessClass >4, economyClass > 10"
+  statement: 
+    SELECT org.acme.airline.aircraft.Aircraft
+      WHERE (firstClassSeats > 3 AND businessClassSeats > 4 AND economySeats > 10)
+}
+
+// get all flight details 
+query AllFlightDetailsWithSource {
+  description: "get all flight details with source = 'sydney'"
+  statement: 
+    SELECT org.acme.airline.flight.flight
+      WHERE (source == 'sydney')
+}
